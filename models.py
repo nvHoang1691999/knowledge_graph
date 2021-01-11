@@ -58,8 +58,7 @@ class SpGAT(nn.Module):
         out_relation_1 = relation_embed.mm(self.W)
 
         edge_embed = out_relation_1[edge_type]
-        edge_embed_nhop = out_relation_1[
-            edge_type_nhop[:, 0]] + out_relation_1[edge_type_nhop[:, 1]]
+        edge_embed_nhop = out_relation_1[edge_type_nhop[:, 0]] + out_relation_1[edge_type_nhop[:, 1]]
 
         x = F.elu(self.out_att(x, edge_list, edge_embed,
                                edge_list_nhop, edge_embed_nhop))
